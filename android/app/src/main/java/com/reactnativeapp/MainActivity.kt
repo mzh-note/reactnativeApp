@@ -1,4 +1,4 @@
-package com.reactnativeapp
+package com.mazhanghua.com
 
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate

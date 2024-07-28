@@ -1,4 +1,4 @@
-package com.reactnativeapp
+package com.mazhanghua.com
 
 import android.app.Application
 import com.facebook.react.PackageList

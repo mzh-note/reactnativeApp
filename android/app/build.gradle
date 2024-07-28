@@ -111,8 +111,29 @@ android {
             signingConfig signingConfigs.debug
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+
+            applicationVariants.all{ variant ->
+                def buildName = variant.buildType.name
+                variant.outputs.all { output ->
+                    if(buildName == 'debug'){
+                        def fileName = "客栈-debug.apk"
+                        outputFileName = fileName
+                    } else if (buildName == 'release'){
+                        def fileName = "客栈-${buildName}.apk"
+//                         def fileName = "客栈-${releaseTime()}.apk"
+                        //def fileName = "LaoMaShiTu-huawei-release-${releaseTime()}.apk"
+                        //渠道名:通用:general, 华为:huawei
+                        //状态:release:正式上线包, debug:内部测试包
+                        outputFileName = fileName
+                    }
+                }
+            }
         }
     }
+}
+//获取系统时间，写在android{}中
+def releaseTime() {
+  	return new Date().format("yyyyMMddHHmmss", TimeZone.getTimeZone("GMT+08:00"))
 }
 
 dependencies {
